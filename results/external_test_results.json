@@ -1,0 +1,78 @@
+{
+  "province_based": {
+    "veteriner": {
+      "internal_r2": 0.6607852578163147,
+      "external_r2": 0.7456165552139282,
+      "internal_mae": 1.7684332132339478,
+      "external_mae": 1.7231954336166382,
+      "external_provinces": [
+        "Trabzon",
+        "Şanlıurfa",
+        "Eskişehir",
+        "Muğla",
+        "Kayseri",
+        "Samsun",
+        "Mardin",
+        "Çanakkale",
+        "Erzurum",
+        "Adana"
+      ]
+    },
+    "gida": {
+      "internal_r2": 0.8529015183448792,
+      "external_r2": 0.7641050815582275,
+      "internal_mae": 0.6629641652107239,
+      "external_mae": 0.7553730607032776,
+      "external_provinces": [
+        "Trabzon",
+        "Şanlıurfa",
+        "Eskişehir",
+        "Muğla",
+        "Kayseri",
+        "Samsun",
+        "Mardin",
+        "Çanakkale",
+        "Erzurum",
+        "Adana"
+      ]
+    },
+    "ziraat": {
+      "internal_r2": 0.702299952507019,
+      "external_r2": 0.6571845412254333,
+      "internal_mae": 2.3541812896728516,
+      "external_mae": 3.1727466583251953,
+      "external_provinces": [
+        "Trabzon",
+        "Şanlıurfa",
+        "Eskişehir",
+        "Muğla",
+        "Kayseri",
+        "Samsun",
+        "Mardin",
+        "Çanakkale",
+        "Erzurum",
+        "Adana"
+      ]
+    }
+  },
+  "holdout": {
+    "veteriner": {
+      "internal_r2": 0.6833387613296509,
+      "external_r2": 0.6643674969673157,
+      "internal_mae": 1.751381754875183,
+      "external_mae": 1.7867673635482788
+    },
+    "gida": {
+      "internal_r2": 0.7979405522346497,
+      "external_r2": 0.8979835510253906,
+      "internal_mae": 0.6522466540336609,
+      "external_mae": 0.5106313824653625
+    },
+    "ziraat": {
+      "internal_r2": 0.6641982793807983,
+      "external_r2": 0.6640885472297668,
+      "internal_mae": 2.6317691802978516,
+      "external_mae": 2.70815110206604
+    }
+  }
+}

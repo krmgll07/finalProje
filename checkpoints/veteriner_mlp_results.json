@@ -1,0 +1,36 @@
+{
+  "profession": "veteriner",
+  "model": "mlp",
+  "input_dim": 28,
+  "epochs_trained": 35,
+  "training_time_seconds": 1.3036179542541504,
+  "best_val_loss": 5.428827961285909,
+  "best_val_r2": 0.6929177045822144,
+  "test_loss": 5.5883839925130205,
+  "test_mae": 1.691741943359375,
+  "test_r2": 0.732690691947937,
+  "parameters": 14529,
+  "timestamp": "2025-12-25T01:05:53.407861",
+  "config": {
+    "profession": "veteriner",
+    "all": true,
+    "data_dir": ".",
+    "model": "mlp",
+    "hidden_dim": 128,
+    "dropout": 0.3,
+    "epochs": 100,
+    "batch_size": 32,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "patience": 15,
+    "save_dir": "checkpoints",
+    "seed": 42,
+    "augment": false,
+    "augment_factor": 1.0,
+    "augment_methods": [
+      "noise",
+      "smote",
+      "mixup"
+    ]
+  }
+}

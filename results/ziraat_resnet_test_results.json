@@ -1,0 +1,14 @@
+{
+  "profession": "ziraat",
+  "model": "resnet",
+  "mae": 2.538015365600586,
+  "rmse": 3.7466938495635986,
+  "r2": 0.666795015335083,
+  "mape": 39.91249084472656,
+  "classification_counts": {
+    "norm_fazlasi": 42,
+    "norm_eksigi": 67,
+    "dengede": 75
+  },
+  "num_samples": 184
+}

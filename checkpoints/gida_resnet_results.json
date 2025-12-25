@@ -1,0 +1,36 @@
+{
+  "profession": "gida",
+  "model": "resnet",
+  "input_dim": 35,
+  "epochs_trained": 66,
+  "training_time_seconds": 5.026548147201538,
+  "best_val_loss": 0.7674769709507624,
+  "best_val_r2": 0.7544012069702148,
+  "test_loss": 0.5406324714422226,
+  "test_mae": 0.4127923250198364,
+  "test_r2": 0.896490216255188,
+  "parameters": 105601,
+  "timestamp": "2025-12-25T01:06:06.681654",
+  "config": {
+    "profession": "gida",
+    "all": true,
+    "data_dir": ".",
+    "model": "resnet",
+    "hidden_dim": 128,
+    "dropout": 0.3,
+    "epochs": 100,
+    "batch_size": 32,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "patience": 15,
+    "save_dir": "checkpoints",
+    "seed": 42,
+    "augment": false,
+    "augment_factor": 1.0,
+    "augment_methods": [
+      "noise",
+      "smote",
+      "mixup"
+    ]
+  }
+}

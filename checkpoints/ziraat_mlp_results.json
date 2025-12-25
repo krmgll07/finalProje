@@ -1,0 +1,36 @@
+{
+  "profession": "ziraat",
+  "model": "mlp",
+  "input_dim": 35,
+  "epochs_trained": 50,
+  "training_time_seconds": 1.965409517288208,
+  "best_val_loss": 16.980996529261272,
+  "best_val_r2": 0.6134368181228638,
+  "test_loss": 13.22213594118754,
+  "test_mae": 2.4856669902801514,
+  "test_r2": 0.6790705919265747,
+  "parameters": 15425,
+  "timestamp": "2025-12-25T01:06:10.281298",
+  "config": {
+    "profession": "ziraat",
+    "all": true,
+    "data_dir": ".",
+    "model": "mlp",
+    "hidden_dim": 128,
+    "dropout": 0.3,
+    "epochs": 100,
+    "batch_size": 32,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "patience": 15,
+    "save_dir": "checkpoints",
+    "seed": 42,
+    "augment": false,
+    "augment_factor": 1.0,
+    "augment_methods": [
+      "noise",
+      "smote",
+      "mixup"
+    ]
+  }
+}

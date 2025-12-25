@@ -1,0 +1,36 @@
+{
+  "profession": "gida",
+  "model": "mlp",
+  "input_dim": 35,
+  "epochs_trained": 35,
+  "training_time_seconds": 1.2716484069824219,
+  "best_val_loss": 0.8595859458049139,
+  "best_val_r2": 0.7261607646942139,
+  "test_loss": 0.44503270586331684,
+  "test_mae": 0.37974509596824646,
+  "test_r2": 0.915553867816925,
+  "parameters": 15425,
+  "timestamp": "2025-12-25T01:06:01.619989",
+  "config": {
+    "profession": "gida",
+    "all": true,
+    "data_dir": ".",
+    "model": "mlp",
+    "hidden_dim": 128,
+    "dropout": 0.3,
+    "epochs": 100,
+    "batch_size": 32,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "patience": 15,
+    "save_dir": "checkpoints",
+    "seed": 42,
+    "augment": false,
+    "augment_factor": 1.0,
+    "augment_methods": [
+      "noise",
+      "smote",
+      "mixup"
+    ]
+  }
+}

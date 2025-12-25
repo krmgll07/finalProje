@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Test Sonuclari - Norm Kadro Analiz Sistemi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        .metric-card {
+            transition: transform 0.3s;
+            border-radius: 10px;
+        }
+        .metric-card:hover {
+            transform: translateY(-5px);
+        }
+        .metric-value {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .metric-label {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+        .model-badge {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        .badge-mlp { background-color: #e3f2fd; color: #1565c0; }
+        .badge-resnet { background-color: #f3e5f5; color: #7b1fa2; }
+        .badge-attention { background-color: #e8f5e9; color: #2e7d32; }
+        .profession-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px 10px 0 0;
+        }
+        .table-metrics th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+        }
+        .r2-excellent { color: #2e7d32; font-weight: bold; }
+        .r2-good { color: #558b2f; }
+        .r2-moderate { color: #f9a825; }
+        .r2-poor { color: #e53935; }
+        .augmentation-card {
+            border-left: 4px solid #667eea;
+        }
+        .external-test-card {
+            border-left: 4px solid #764ba2;
+        }
+    </style>
+</head>
+<body>
+
+<div class="d-flex" id="wrapper">
+    <div class="bg-dark text-white" id="sidebar-wrapper">
+        <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
+            <i class="fas fa-chart-line me-2"></i>Norm Analiz
+        </div>
+        <div class="list-group list-group-flush my-3">
+            <a href="/dashboard" class="list-group-item list-group-item-action bg-transparent text-white">
+                <i class="fas fa-tachometer-alt me-2"></i>Genel Bakis
+            </a>
+            <a href="/dashboard#charts" class="list-group-item list-group-item-action bg-transparent text-white">
+                <i class="fas fa-chart-pie me-2"></i>Grafikler
+            </a>
+            <a href="/dashboard#details" class="list-group-item list-group-item-action bg-transparent text-white">
+                <i class="fas fa-table me-2"></i>Detayli Liste
+            </a>
+            <a href="/dashboard/test-results" class="list-group-item list-group-item-action bg-transparent text-white active">
+                <i class="fas fa-flask me-2"></i>Test Sonuclari
+            </a>
+        </div>
+    </div>
+
+    <div id="page-content-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white py-4 px-4 border-bottom shadow-sm">
+            <div class="d-flex align-items-center">
+                <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
+                <h2 class="fs-2 m-0">Model Test Sonuclari</h2>
+            </div>
+        </nav>
+
+        <div class="container-fluid px-4">
+            <!-- Ozet Metrikler -->
+            <div class="row g-3 my-3">
+                <div class="col-md-3">
+                    <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded metric-card border-left-blue">
+                        <div>
+                            <h3 class="fs-2" id="best-r2">-</h3>
+                            <p class="fs-5 text-muted">En Iyi R2</p>
+                        </div>
+                        <i class="fas fa-bullseye fs-1 text-primary border rounded-full p-3"></i>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded metric-card border-left-green">
+                        <div>
+                            <h3 class="fs-2" id="best-mae">-</h3>
+                            <p class="fs-5 text-muted">En Dusuk MAE</p>
+                        </div>
+                        <i class="fas fa-chart-bar fs-1 text-success border rounded-full p-3"></i>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded metric-card border-left-yellow">
+                        <div>
+                            <h3 class="fs-2" id="total-models">9</h3>
+                            <p class="fs-5 text-muted">Test Edilen Model</p>
+                        </div>
+                        <i class="fas fa-brain fs-1 text-warning border rounded-full p-3"></i>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded metric-card border-left-red">
+                        <div>
+                            <h3 class="fs-2" id="total-samples">184</h3>
+                            <p class="fs-5 text-muted">Test Ornegi</p>
+                        </div>
+                        <i class="fas fa-database fs-1 text-danger border rounded-full p-3"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Model Karsilastirma Grafikleri -->
+            <div class="row my-4">
+                <div class="col-lg-6">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-white fw-bold">
+                            <i class="fas fa-chart-bar me-2"></i>Model R2 Karsilastirmasi
+                        </div>
+                        <div class="card-body">
+                            <canvas id="r2Chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-white fw-bold">
+                            <i class="fas fa-chart-line me-2"></i>Model MAE Karsilastirmasi
+                        </div>
+                        <div class="card-body">
+                            <canvas id="maeChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Meslek Bazli Detayli Sonuclar -->
+            <div class="row my-4">
+                <h3 class="fs-4 mb-3"><i class="fas fa-microscope me-2"></i>Meslek Bazli Model Performanslari</h3>
+
+                <!-- Veteriner -->
+                <div class="col-lg-4 mb-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="profession-header" style="background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);">
+                            <h5 class="mb-0"><i class="fas fa-stethoscope me-2"></i>Veteriner Hekim</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm table-metrics">
+                                <thead>
+                                    <tr>
+                                        <th>Model</th>
+                                        <th>R2</th>
+                                        <th>MAE</th>
+                                        <th>RMSE</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="veteriner-results">
+                                    <tr><td colspan="4" class="text-center">Yukleniyor...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gida -->
+                <div class="col-lg-4 mb-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="profession-header" style="background: linear-gradient(135deg, #FF9800 0%, #F57C00 100%);">
+                            <h5 class="mb-0"><i class="fas fa-utensils me-2"></i>Gida Muhendisi</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm table-metrics">
+                                <thead>
+                                    <tr>
+                                        <th>Model</th>
+                                        <th>R2</th>
+                                        <th>MAE</th>
+                                        <th>RMSE</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="gida-results">
+                                    <tr><td colspan="4" class="text-center">Yukleniyor...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ziraat -->
+                <div class="col-lg-4 mb-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="profession-header" style="background: linear-gradient(135deg, #2196F3 0%, #1565C0 100%);">
+                            <h5 class="mb-0"><i class="fas fa-seedling me-2"></i>Ziraat Muhendisi</h5>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm table-metrics">
+                                <thead>
+                                    <tr>
+                                        <th>Model</th>
+                                        <th>R2</th>
+                                        <th>MAE</th>
+                                        <th>RMSE</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ziraat-results">
+                                    <tr><td colspan="4" class="text-center">Yukleniyor...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- External Test ve Augmentation Sonuclari -->
+            <div class="row my-4">
+                <div class="col-lg-6 mb-4">
+                    <div class="card shadow-sm external-test-card">
+                        <div class="card-header bg-white fw-bold">
+                            <i class="fas fa-external-link-alt me-2"></i>Dis Test Seti Sonuclari (Holdout %20)
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Meslek</th>
+                                        <th>Ic Test R2</th>
+                                        <th>Dis Test R2</th>
+                                        <th>Ic Test MAE</th>
+                                        <th>Dis Test MAE</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="external-test-results">
+                                    <tr><td colspan="5" class="text-center">Yukleniyor...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <div class="card shadow-sm augmentation-card">
+                        <div class="card-header bg-white fw-bold">
+                            <i class="fas fa-magic me-2"></i>Veri Artirma (Augmentation) Karsilastirmasi
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-sm">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Meslek</th>
+                                        <th>En Iyi Yontem</th>
+                                        <th>Baseline R2</th>
+                                        <th>Best R2</th>
+                                        <th>Iyilesme</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="augmentation-results">
+                                    <tr><td colspan="5" class="text-center">Yukleniyor...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Siniflandirma Dagilimi -->
+            <div class="row my-4">
+                <div class="col-12">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-white fw-bold">
+                            <i class="fas fa-pie-chart me-2"></i>Tahmin Siniflandirma Dagilimi
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <canvas id="vetClassChart"></canvas>
+                                    <p class="text-center mt-2 fw-bold">Veteriner Hekim</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <canvas id="gidaClassChart"></canvas>
+                                    <p class="text-center mt-2 fw-bold">Gida Muhendisi</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <canvas id="ziraatClassChart"></canvas>
+                                    <p class="text-center mt-2 fw-bold">Ziraat Muhendisi</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/static/test_results.js"></script>
+
+</body>
+</html>

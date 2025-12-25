@@ -1,0 +1,14 @@
+{
+  "profession": "veteriner",
+  "model": "attention",
+  "mae": 1.6984050273895264,
+  "rmse": 2.381769895553589,
+  "r2": 0.7268719673156738,
+  "mape": 33.99311447143555,
+  "classification_counts": {
+    "norm_fazlasi": 58,
+    "norm_eksigi": 47,
+    "dengede": 79
+  },
+  "num_samples": 184
+}

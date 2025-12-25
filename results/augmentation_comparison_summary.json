@@ -1,0 +1,206 @@
+{
+  "timestamp": "2025-12-25T01:02:42.400859",
+  "professions": {
+    "veteriner": {
+      "baseline": {
+        "train_size": 658,
+        "mae": 1.6908620595932007,
+        "rmse": 2.454836368560791,
+        "r2": 0.7098572254180908,
+        "epochs": 35,
+        "profession": "veteriner",
+        "augmentation": "Augmentation YOK (Baseline)"
+      },
+      "best": {
+        "train_size": 1316,
+        "mae": 1.7042481899261475,
+        "rmse": 2.397977590560913,
+        "r2": 0.723142147064209,
+        "epochs": 37,
+        "profession": "veteriner",
+        "augmentation": "Mixup"
+      },
+      "all_results": [
+        {
+          "train_size": 658,
+          "mae": 1.6908620595932007,
+          "rmse": 2.454836368560791,
+          "r2": 0.7098572254180908,
+          "epochs": 35,
+          "profession": "veteriner",
+          "augmentation": "Augmentation YOK (Baseline)"
+        },
+        {
+          "train_size": 1316,
+          "mae": 1.6863811016082764,
+          "rmse": 2.414841651916504,
+          "r2": 0.7192343473434448,
+          "epochs": 37,
+          "profession": "veteriner",
+          "augmentation": "Gaussian Noise"
+        },
+        {
+          "train_size": 1316,
+          "mae": 1.7030034065246582,
+          "rmse": 2.4984874725341797,
+          "r2": 0.6994470357894897,
+          "epochs": 41,
+          "profession": "veteriner",
+          "augmentation": "SMOTE-like"
+        },
+        {
+          "train_size": 1316,
+          "mae": 1.7042481899261475,
+          "rmse": 2.397977590560913,
+          "r2": 0.723142147064209,
+          "epochs": 37,
+          "profession": "veteriner",
+          "augmentation": "Mixup"
+        },
+        {
+          "train_size": 1315,
+          "mae": 1.685238242149353,
+          "rmse": 2.414196252822876,
+          "r2": 0.7193844318389893,
+          "epochs": 31,
+          "profession": "veteriner",
+          "augmentation": "Tüm Yöntemler"
+        }
+      ]
+    },
+    "gida": {
+      "baseline": {
+        "train_size": 658,
+        "mae": 0.37510308623313904,
+        "rmse": 0.6755663156509399,
+        "r2": 0.9150038361549377,
+        "epochs": 35,
+        "profession": "gida",
+        "augmentation": "Augmentation YOK (Baseline)"
+      },
+      "best": {
+        "train_size": 1316,
+        "mae": 0.41432875394821167,
+        "rmse": 0.6703916788101196,
+        "r2": 0.9163009524345398,
+        "epochs": 21,
+        "profession": "gida",
+        "augmentation": "SMOTE-like"
+      },
+      "all_results": [
+        {
+          "train_size": 658,
+          "mae": 0.37510308623313904,
+          "rmse": 0.6755663156509399,
+          "r2": 0.9150038361549377,
+          "epochs": 35,
+          "profession": "gida",
+          "augmentation": "Augmentation YOK (Baseline)"
+        },
+        {
+          "train_size": 1316,
+          "mae": 0.395673930644989,
+          "rmse": 0.6713709235191345,
+          "r2": 0.9160562753677368,
+          "epochs": 20,
+          "profession": "gida",
+          "augmentation": "Gaussian Noise"
+        },
+        {
+          "train_size": 1316,
+          "mae": 0.41432875394821167,
+          "rmse": 0.6703916788101196,
+          "r2": 0.9163009524345398,
+          "epochs": 21,
+          "profession": "gida",
+          "augmentation": "SMOTE-like"
+        },
+        {
+          "train_size": 1316,
+          "mae": 0.465356707572937,
+          "rmse": 0.8707525730133057,
+          "r2": 0.858794093132019,
+          "epochs": 27,
+          "profession": "gida",
+          "augmentation": "Mixup"
+        },
+        {
+          "train_size": 1315,
+          "mae": 0.4169228971004486,
+          "rmse": 0.7140201926231384,
+          "r2": 0.9050523042678833,
+          "epochs": 20,
+          "profession": "gida",
+          "augmentation": "Tüm Yöntemler"
+        }
+      ]
+    },
+    "ziraat": {
+      "baseline": {
+        "train_size": 658,
+        "mae": 2.4648237228393555,
+        "rmse": 3.6429412364959717,
+        "r2": 0.68499356508255,
+        "epochs": 50,
+        "profession": "ziraat",
+        "augmentation": "Augmentation YOK (Baseline)"
+      },
+      "best": {
+        "train_size": 1316,
+        "mae": 2.4833147525787354,
+        "rmse": 3.60478138923645,
+        "r2": 0.6915584206581116,
+        "epochs": 37,
+        "profession": "ziraat",
+        "augmentation": "SMOTE-like"
+      },
+      "all_results": [
+        {
+          "train_size": 658,
+          "mae": 2.4648237228393555,
+          "rmse": 3.6429412364959717,
+          "r2": 0.68499356508255,
+          "epochs": 50,
+          "profession": "ziraat",
+          "augmentation": "Augmentation YOK (Baseline)"
+        },
+        {
+          "train_size": 1316,
+          "mae": 2.5049686431884766,
+          "rmse": 3.692516803741455,
+          "r2": 0.6763615608215332,
+          "epochs": 37,
+          "profession": "ziraat",
+          "augmentation": "Gaussian Noise"
+        },
+        {
+          "train_size": 1316,
+          "mae": 2.4833147525787354,
+          "rmse": 3.60478138923645,
+          "r2": 0.6915584206581116,
+          "epochs": 37,
+          "profession": "ziraat",
+          "augmentation": "SMOTE-like"
+        },
+        {
+          "train_size": 1316,
+          "mae": 2.433943033218384,
+          "rmse": 3.7088513374328613,
+          "r2": 0.6734919548034668,
+          "epochs": 27,
+          "profession": "ziraat",
+          "augmentation": "Mixup"
+        },
+        {
+          "train_size": 1315,
+          "mae": 2.52755069732666,
+          "rmse": 3.7130253314971924,
+          "r2": 0.6727566123008728,
+          "epochs": 32,
+          "profession": "ziraat",
+          "augmentation": "Tüm Yöntemler"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "profession": "gida",
+  "model": "attention",
+  "mae": 0.4862276017665863,
+  "rmse": 0.8372167944908142,
+  "r2": 0.8694613575935364,
+  "mape": 38.56842803955078,
+  "classification_counts": {
+    "norm_fazlasi": 38,
+    "norm_eksigi": 32,
+    "dengede": 114
+  },
+  "num_samples": 184
+}

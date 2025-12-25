@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wc:*)",
+      "Bash(python create_merged_datasets.py:*)",
+      "Bash(python -c:*)",
+      "Bash(python norm_formuller.py:*)",
+      "Bash(python train.py:*)",
+      "Bash(python test.py:*)",
+      "Bash(ls:*)"
+    ]
+  }
+}

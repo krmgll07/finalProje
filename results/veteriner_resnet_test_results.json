@@ -1,0 +1,14 @@
+{
+  "profession": "veteriner",
+  "model": "resnet",
+  "mae": 1.7218577861785889,
+  "rmse": 2.449707269668579,
+  "r2": 0.7110683917999268,
+  "mape": 35.502071380615234,
+  "classification_counts": {
+    "norm_fazlasi": 47,
+    "norm_eksigi": 56,
+    "dengede": 81
+  },
+  "num_samples": 184
+}

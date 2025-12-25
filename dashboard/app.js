@@ -179,7 +179,7 @@ function createCharts(summaryData) {
             labels: ['Fazla', 'Eksik', 'Dengede'],
             datasets: [{
                 data: [totalSurplus, totalDeficit, totalBalanced],
-                backgroundColor: ['#198754', '#dc3545', '#ffc107'],
+                backgroundColor: ['#0d6efd', '#6f42c1', '#20c997'],
                 hoverOffset: 4
             }]
         },
@@ -297,7 +297,7 @@ function loadStaticData() {
             labels: ['Fazla', 'Eksik', 'Dengede'],
             datasets: [{
                 data: [totalSurplus, totalDeficit, totalBalanced],
-                backgroundColor: ['#198754', '#dc3545', '#ffc107'],
+                backgroundColor: ['#0d6efd', '#6f42c1', '#20c997'],
                 hoverOffset: 4
             }]
         },
