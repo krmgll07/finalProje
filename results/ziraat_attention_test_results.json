@@ -1,0 +1,14 @@
+{
+  "profession": "ziraat",
+  "model": "attention",
+  "mae": 2.636646270751953,
+  "rmse": 3.8496532440185547,
+  "r2": 0.6482304334640503,
+  "mape": 39.5543212890625,
+  "classification_counts": {
+    "norm_fazlasi": 53,
+    "norm_eksigi": 62,
+    "dengede": 69
+  },
+  "num_samples": 184
+}

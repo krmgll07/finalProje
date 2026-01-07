@@ -1,0 +1,14 @@
+{
+  "profession": "gida",
+  "model": "mlp",
+  "mae": 0.37974509596824646,
+  "rmse": 0.6733769774436951,
+  "r2": 0.915553867816925,
+  "mape": 29.711341857910156,
+  "classification_counts": {
+    "norm_fazlasi": 30,
+    "norm_eksigi": 27,
+    "dengede": 127
+  },
+  "num_samples": 184
+}

@@ -1,0 +1,14 @@
+{
+  "profession": "gida",
+  "model": "resnet",
+  "mae": 0.4127923250198364,
+  "rmse": 0.7455194592475891,
+  "r2": 0.896490216255188,
+  "mape": 27.891904830932617,
+  "classification_counts": {
+    "norm_fazlasi": 33,
+    "norm_eksigi": 25,
+    "dengede": 126
+  },
+  "num_samples": 184
+}

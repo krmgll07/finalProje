@@ -1,0 +1,14 @@
+{
+  "profession": "ziraat",
+  "model": "mlp",
+  "mae": 2.4856669902801514,
+  "rmse": 3.677030324935913,
+  "r2": 0.6790705919265747,
+  "mape": 38.955074310302734,
+  "classification_counts": {
+    "norm_fazlasi": 42,
+    "norm_eksigi": 64,
+    "dengede": 78
+  },
+  "num_samples": 184
+}

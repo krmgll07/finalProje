@@ -1,0 +1,36 @@
+{
+  "profession": "gida",
+  "model": "attention",
+  "input_dim": 35,
+  "epochs_trained": 30,
+  "training_time_seconds": 1.5688705444335938,
+  "best_val_loss": 0.8080724676450094,
+  "best_val_r2": 0.7567447423934937,
+  "test_loss": 0.6911464482545853,
+  "test_mae": 0.4862276017665863,
+  "test_r2": 0.8694613575935364,
+  "parameters": 64705,
+  "timestamp": "2025-12-25T01:06:08.283659",
+  "config": {
+    "profession": "gida",
+    "all": true,
+    "data_dir": ".",
+    "model": "attention",
+    "hidden_dim": 128,
+    "dropout": 0.3,
+    "epochs": 100,
+    "batch_size": 32,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "patience": 15,
+    "save_dir": "checkpoints",
+    "seed": 42,
+    "augment": false,
+    "augment_factor": 1.0,
+    "augment_methods": [
+      "noise",
+      "smote",
+      "mixup"
+    ]
+  }
+}

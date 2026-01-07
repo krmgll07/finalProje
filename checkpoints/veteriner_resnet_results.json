@@ -1,0 +1,36 @@
+{
+  "profession": "veteriner",
+  "model": "resnet",
+  "input_dim": 28,
+  "epochs_trained": 58,
+  "training_time_seconds": 4.306621074676514,
+  "best_val_loss": 4.468118071556091,
+  "best_val_r2": 0.7480818033218384,
+  "test_loss": 5.939887483914693,
+  "test_mae": 1.7218577861785889,
+  "test_r2": 0.7110683917999268,
+  "parameters": 104705,
+  "timestamp": "2025-12-25T01:05:57.752147",
+  "config": {
+    "profession": "veteriner",
+    "all": true,
+    "data_dir": ".",
+    "model": "resnet",
+    "hidden_dim": 128,
+    "dropout": 0.3,
+    "epochs": 100,
+    "batch_size": 32,
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "patience": 15,
+    "save_dir": "checkpoints",
+    "seed": 42,
+    "augment": false,
+    "augment_factor": 1.0,
+    "augment_methods": [
+      "noise",
+      "smote",
+      "mixup"
+    ]
+  }
+}

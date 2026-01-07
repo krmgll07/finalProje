@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Norm Kadro Analiz Sistemi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="d-flex" id="wrapper">
+    <div class="bg-dark text-white" id="sidebar-wrapper">
+        <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">
+            <i class="fas fa-chart-line me-2"></i>Norm Analiz
+        </div>
+        <div class="list-group list-group-flush my-3">
+            <a href="#" class="list-group-item list-group-item-action bg-transparent text-white active">
+                <i class="fas fa-tachometer-alt me-2"></i>Genel Bakış
+            </a>
+            <a href="#charts" class="list-group-item list-group-item-action bg-transparent text-white">
+                <i class="fas fa-chart-pie me-2"></i>Grafikler
+            </a>
+            <a href="#details" class="list-group-item list-group-item-action bg-transparent text-white">
+                <i class="fas fa-table me-2"></i>Detaylı Liste
+            </a>
+            <a href="/dashboard/test-results" class="list-group-item list-group-item-action bg-transparent text-white">
+                <i class="fas fa-flask me-2"></i>Test Sonuçları
+            </a>
+        </div>
+    </div>
+
+    <div id="page-content-wrapper">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white py-4 px-4 border-bottom shadow-sm">
+            <div class="d-flex align-items-center">
+                <i class="fas fa-align-left primary-text fs-4 me-3" id="menu-toggle"></i>
+                <h2 class="fs-2 m-0">Yönetim Paneli</h2>
+            </div>
+        </nav>
+
+        <div class="container-fluid px-4">
+            <div class="row g-3 my-2">
+                <div class="col-md-3">
+                    <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded kpi-card border-left-blue">
+                        <div>
+                            <h3 class="fs-2" id="total-count">-</h3>
+                            <p class="fs-5 text-muted">Toplam İlçe</p>
+                        </div>
+                        <i class="fas fa-map-marker-alt fs-1 primary-text border rounded-full secondary-bg p-3"></i>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded kpi-card border-left-green">
+                        <div>
+                            <h3 class="fs-2" id="total-surplus">-</h3>
+                            <p class="fs-5 text-muted">Norm Fazlası</p>
+                        </div>
+                        <i class="fas fa-arrow-up fs-1 text-success border rounded-full p-3"></i>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded kpi-card border-left-red">
+                        <div>
+                            <h3 class="fs-2" id="total-deficit">-</h3>
+                            <p class="fs-5 text-muted">Norm Eksiği</p>
+                        </div>
+                        <i class="fas fa-arrow-down fs-1 text-danger border rounded-full p-3"></i>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="p-3 bg-white shadow-sm d-flex justify-content-around align-items-center rounded kpi-card border-left-yellow">
+                        <div>
+                            <h3 class="fs-2" id="total-balanced">-</h3>
+                            <p class="fs-5 text-muted">Dengede</p>
+                        </div>
+                        <i class="fas fa-balance-scale fs-1 text-warning border rounded-full p-3"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row my-5" id="charts">
+                <div class="col-lg-8">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-white fw-bold">Şehirlere Göre En Yüksek Norm Fazlası</div>
+                        <div class="card-body">
+                            <canvas id="barChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-white fw-bold">Genel Durum Dağılımı</div>
+                        <div class="card-body">
+                            <canvas id="pieChart" style="max-height: 300px;"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row my-5" id="details">
+                <h3 class="fs-4 mb-3">Detaylı Personel Listesi</h3>
+                <div class="col">
+                    <div class="bg-white rounded shadow-sm p-4">
+                        <div class="table-responsive">
+                            <table id="dataTable" class="table table-hover bg-white rounded shadow-sm" style="width:100%">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Meslek</th>
+                                        <th>Şehir</th>
+                                        <th>İlçe</th>
+                                        <th>Mevcut</th>
+                                        <th>Norm</th>
+                                        <th>Fark</th>
+                                        <th>Durum</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+
+<script src="/static/data.js"></script> 
+<script src="/static/app.js"></script>
+
+</body>
+</html>
